@@ -64,18 +64,6 @@
         app:layout_constraintGuide_begin="202dp" />
 
     <Spinner
-        android:id="@+id/metric_dropdown"
-        android:layout_width="357dp"
-        android:layout_height="48sp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="17dp"
-        app:layout_constraintBottom_toTopOf="@+id/from_unit_label"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/select_metric_label"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Spinner
         android:id="@+id/from_unit_dropdown"
         android:layout_width="149dp"
         android:layout_height="48sp"
@@ -96,9 +84,9 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.062"
+        app:layout_constraintHorizontal_bias="0.061"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@+id/metric_dropdown" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
     <Spinner
         android:id="@+id/to_unit_dropdown"
@@ -124,22 +112,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/from_unit_dropdown" />
 
-    <EditText
-        android:id="@+id/input_number_field"
-        android:layout_width="362dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:enabled="true"
-        android:hint="@string/input_placeholder"
-        android:inputType="numberDecimal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.673"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_label"
-        app:layout_constraintVertical_bias="0.0" />
-
     <TextView
         android:id="@+id/result_label"
         android:layout_width="wrap_content"
@@ -154,7 +126,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline4"
         app:layout_constraintVertical_bias="0.235" />
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"
         android:layout_width="wrap_content"
@@ -179,6 +150,26 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="285dp" />
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="338dp"
+        android:layout_height="66dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/result_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/input_label">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_number_field"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:ems="10"
+            android:enabled="true"
+            android:hint="@string/input_placeholder"
+            android:inputType="numberDecimal" />
+    </com.google.android.material.textfield.TextInputLayout>
+
     <TextView
         android:id="@+id/result_number"
         android:layout_width="156dp"
@@ -198,5 +189,22 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="15dp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+        android:layout_width="352dp"
+        android:layout_height="54dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/select_metric_label">
+
+        <AutoCompleteTextView
+            android:id="@+id/metric_selection_dropdown"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="none"
+            android:hint="-- Pilih Metrik"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

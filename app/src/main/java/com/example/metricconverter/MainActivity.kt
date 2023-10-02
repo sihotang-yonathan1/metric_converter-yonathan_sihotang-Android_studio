@@ -8,9 +8,11 @@ import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
+import com.google.android.material.textfield.TextInputLayout
 import kotlin.math.pow
 
 data class MetricInfo(
@@ -123,15 +125,14 @@ class MainActivity : AppCompatActivity() {
         }
 
         // metric dropdown
-        val metricSelectedDropDown: Spinner = findViewById(R.id.metric_dropdown)
+        val metricSelectedDropDown: AutoCompleteTextView = findViewById(R.id.metric_selection_dropdown)
 
         // get data from metricInfo
-        ArrayAdapter<String>(this, android.R.layout.simple_spinner_item)
+        ArrayAdapter<String>(this, R.layout.metric_selection_item)
             .also {
                     adapter ->
-                adapter.add("-- Pilih metrik")
                 adapter.addAll(metricInfo.keys)
-                metricSelectedDropDown.adapter = adapter
+                metricSelectedDropDown.setAdapter(adapter)
             }
         val toUnitDropdown: Spinner = findViewById(R.id.to_unit_dropdown)
 
@@ -189,14 +190,8 @@ class MainActivity : AppCompatActivity() {
 
         // set those variables as some kind of state
 
-        metricSelectedDropDown.onItemSelectedListener = object :
-            AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
+        metricSelectedDropDown.onItemClickListener =
+            AdapterView.OnItemClickListener { parent, view, position, id ->
                 // Log to check if the callback is being triggered
                 Log.i("metricSelected", "onItemSelected: selected metric position: $position")
                 Log.i("metricSelected", "onItemSelected: selected metric: ${parent?.getItemAtPosition(position)}")
@@ -236,18 +231,13 @@ class MainActivity : AppCompatActivity() {
                     fromUnitDropdown.adapter = adapter
 
                     Log.i("metricSelected", "onItemSelected: adapters updated")
-                }
-                else {
+                } else {
                     // disable when the value is placeholder
                     toUnitDropdown.isEnabled = false
                     fromUnitDropdown.isEnabled = false
                     inputUserField.isEnabled = false
                 }
             }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-            }
-        }
 
         inputUserField.addTextChangedListener(object:
             TextWatcher {

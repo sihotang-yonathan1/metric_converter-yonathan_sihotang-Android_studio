@@ -5,5 +5,5 @@
     <string name="select_metric_label">Input</string>
     <string name="from_metric_label">Dari:</string>
     <string name="result_label">Hasil</string>
-    <string name="input_placeholder">Ketik input disini</string>
+    <string name="input_placeholder">Input</string>
 </resources>
