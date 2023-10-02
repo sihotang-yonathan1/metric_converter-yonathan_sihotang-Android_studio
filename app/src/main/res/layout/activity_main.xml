@@ -63,18 +63,6 @@
         android:orientation="vertical"
         app:layout_constraintGuide_begin="202dp" />
 
-    <Spinner
-        android:id="@+id/from_unit_dropdown"
-        android:layout_width="149dp"
-        android:layout_height="48sp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline5"
-        app:layout_constraintEnd_toStartOf="@+id/guideline3"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/from_unit_label"
-        app:layout_constraintTop_toBottomOf="@+id/from_unit_label"
-        app:layout_constraintVertical_bias="0.0" />
-
     <TextView
         android:id="@+id/to_unit_label"
         android:layout_width="wrap_content"
@@ -104,13 +92,13 @@
         android:id="@+id/input_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="20dp"
         android:text="@string/select_metric_label"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/from_unit_dropdown" />
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.097"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/result_label"
@@ -205,6 +193,26 @@
             android:layout_height="match_parent"
             android:inputType="none"
             android:hint="-- Pilih Metrik"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="174dp"
+        android:layout_height="58dp"
+        app:layout_constraintBottom_toTopOf="@+id/input_label"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/from_unit_label"
+        app:layout_constraintVertical_bias="0.0"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+        >
+
+        <AutoCompleteTextView
+            android:id="@+id/from_unit_dropdown"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="-- Pilih Satuan"
+            android:inputType="none"/>
     </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
