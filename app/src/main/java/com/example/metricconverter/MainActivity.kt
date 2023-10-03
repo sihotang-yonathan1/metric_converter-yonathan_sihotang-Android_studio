@@ -166,6 +166,7 @@ class MainActivity : AppCompatActivity() {
 
         // input field
         val inputUserField: EditText = findViewById(R.id.input_number_field)
+        inputUserField.isEnabled = false
 
         // set those variables as some kind of state
 
@@ -206,6 +207,7 @@ class MainActivity : AppCompatActivity() {
                         android.R.layout.simple_spinner_item
                     )
                     adapter.addAll(selectedmetricInfo?.units ?: emptyList())
+
                     toUnitDropdown.setAdapter(adapter)
                     fromUnitDropdown.setAdapter(adapter)
 
