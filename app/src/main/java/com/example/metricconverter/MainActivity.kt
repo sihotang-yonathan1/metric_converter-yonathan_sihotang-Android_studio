@@ -101,6 +101,8 @@ class MainActivity : AppCompatActivity() {
                 value -> selectedmetricInfo = metricInfo[value]
         }
 
+        val resultNum: TextView = findViewById(R.id.result_number)
+
         fun calculateResult(
             numInput: Double, fromUnitIndex: Int, toUnitIndex: Int,
             unitFactor: Int): Double {
@@ -108,7 +110,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         fun updateResult(){
-            val resultNum: TextView = findViewById(R.id.result_number)
             try {
                 val userNumberInput = userRawInput.toDouble()
                 val resultNumberCalculation = calculateResult(
@@ -210,6 +211,11 @@ class MainActivity : AppCompatActivity() {
 
                     toUnitDropdown.setAdapter(adapter)
                     fromUnitDropdown.setAdapter(adapter)
+
+                    toUnitDropdown.text = null
+                    fromUnitDropdown.text = null
+                    inputUserField.text = null
+                    resultNum.text = null
 
                     Log.i("metricSelected", "onItemSelected: adapters updated")
                 } else {
