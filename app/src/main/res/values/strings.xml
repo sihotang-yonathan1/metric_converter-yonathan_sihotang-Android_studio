@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MetricConverterTest</string>
+    <string name="app_name">MetricConverter</string>
     <string name="app_name_label">Metric Converter</string>
     <string name="creator_info_label">By: Yonathan Hot Gabe Sihotang</string>
     <string name="select_metric_label">Input</string>
