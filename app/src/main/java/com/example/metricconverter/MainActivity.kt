@@ -134,23 +134,13 @@ class MainActivity : AppCompatActivity() {
                 adapter.addAll(metricInfo.keys)
                 metricSelectedDropDown.setAdapter(adapter)
             }
-        val toUnitDropdown: Spinner = findViewById(R.id.to_unit_dropdown)
+        val toUnitDropdown: AutoCompleteTextView = findViewById(R.id.to_unit_dropdown)
 
-        toUnitDropdown.onItemSelectedListener = object :
-            AdapterView.OnItemSelectedListener{
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
+        toUnitDropdown.onItemClickListener =
+            AdapterView.OnItemClickListener { parent, view, position, id ->
                 setToUnitIndex(position)
                 updateResult()
             }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-            }
-        }
 
         // from unit dropdown
         val fromUnitDropdown: AutoCompleteTextView = findViewById(R.id.from_unit_dropdown)
@@ -169,7 +159,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 // add "to unit" and "from unit" dropdown
-                toUnitDropdown.adapter = adapter
+                // toUnitDropdown.setAdapter(adapter)
                 // fromUnitDropdown.setAdapter(adapter)
                 adapter.notifyDataSetChanged()
             }
@@ -216,7 +206,7 @@ class MainActivity : AppCompatActivity() {
                         android.R.layout.simple_spinner_item
                     )
                     adapter.addAll(selectedmetricInfo?.units ?: emptyList())
-                    toUnitDropdown.adapter = adapter
+                    toUnitDropdown.setAdapter(adapter)
                     fromUnitDropdown.setAdapter(adapter)
 
                     Log.i("metricSelected", "onItemSelected: adapters updated")
