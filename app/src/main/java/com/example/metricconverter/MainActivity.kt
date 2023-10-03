@@ -204,7 +204,7 @@ class MainActivity : AppCompatActivity() {
                     // Update the adapters of toUnitDropdown and fromUnitDropdown
                     val adapter = ArrayAdapter<String>(
                         this@MainActivity,
-                        android.R.layout.simple_spinner_item
+                        R.layout.metric_selection_item
                     )
                     adapter.addAll(selectedmetricInfo?.units ?: emptyList())
 
